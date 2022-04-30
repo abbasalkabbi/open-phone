@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import Item from "../components/Item";
+
 class Home extends Component{
     constructor(){
         super()
