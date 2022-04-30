@@ -5,6 +5,7 @@ import Layout from "./pages/Layout";
 import Home from './pages/Home'
 import Nopage from "./pages/Nopage";
 import Samsung from "./pages/Samsung";
+import  Login  from "./pages/Login";
 function App(){
     return(
         <div >
@@ -16,6 +17,7 @@ function App(){
                     <Route path=":id" element={<Samsung/>}/>
                 </Route>
                <Route path="*" element={<Nopage/>}/>
+               <Route path='login' element={<Login/>}/>
            </Route>
            </Routes>
            </BrowserRouter>
