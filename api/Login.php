@@ -18,10 +18,11 @@ if ($_POST){
                        // if loggin
                     while($obj = mysqli_fetch_object($login)){
                         $id= $obj -> id; //hendle Unique_id
+                        $is_admin=$obj->is_admin;
                     }
                     $_SESSION['id']=$id;
                     if($_SESSION['id']){
-                        echo json_encode(['status'=>true,"message" => "successful","id"=>$_SESSION['id']]);
+                        echo json_encode(['status'=>true,"message" => "successful","id"=>$_SESSION['id'],"is_admin"=>$is_admin]);
                     }
                  //End get seesion
                    }else{

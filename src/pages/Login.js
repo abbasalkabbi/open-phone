@@ -9,6 +9,8 @@ class Login extends Component{
             email:'',
             password:'',
             status:'',
+            admin:'',
+            id:""
         }
     }
     handleFormSubmit( event ) {
@@ -27,7 +29,8 @@ class Login extends Component{
               {
               info: result.data.message,
               status:result.data.status,
-              id:result.data.id
+              id:result.data.id,
+              admin:result.data.is_admin
           }))
     }
     error(){
@@ -40,6 +43,7 @@ class Login extends Component{
         }else{
         if(this.state.info=='successful'){
           localStorage.setItem('id',this.state.id)
+          localStorage.setItem('admin',this.state.admin)
           if(localStorage.getItem('id')){
             return(
             <Navigate replace to="/" />
