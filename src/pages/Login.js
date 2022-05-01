@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Navigate } from "react-router";
 import axios from "axios";
-
+const url_login="http://localhost/open-phone/api/Login.php"
 class Login extends Component{
     constructor(){
         super();
@@ -52,6 +52,7 @@ render(){
     const {email,password}=this.state
       return(
            <div>
+             {localStorage.getItem('id')?<Navigate replace to="/" />:''}
                  <div className="container d-flex justify-content-center ">
                    {/* Start Form */}
                              <form className="mt-1  ">
