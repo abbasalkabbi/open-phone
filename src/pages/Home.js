@@ -1,18 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Component } from "react";
 import Item from "../components/Item";
-
+import Context from "../Context";
+import { Loading } from "../components/Loading";
 class Home extends Component{
     constructor(){
         super()
         this.state={
+            data:[],
+            finished:false,
+        }
+    }
+    componentDidMount(){
+        const url=this.props.usecontext.home
+        fetch(`${url}`)
+        .then((res)=>res.json())
+        .then((json)=>{
+            this.setState({
+                data:json,
+                finished:true,
+
+            })
+        })
+    }
+    mapping(){
+        if(this.state.finished){
+            const data=this.state.data.map(item =>
+            <Item
+            id={item.id}
+            img={`http://localhost/open-phone/api/assets/${item.url_img}`}
+            name={item.name}
+            type={item.type ==1?'Samsung':'Apple'}
+            ram={item.ram}
+            rom={item.rom}
+            price={item.price}
+            />)
+            return data
         }
     }
 
-
     render(){
+
+        const {finished}=this.state
+        let loading=""
+          // loadiionng  function
+    if(!finished){
+        loading= <Loading/>
+   }
         return(
         <div className="container">
+            
             {/* titel */}
            <section className="py-5 text-center">
                <div className="row py-lg-5">
@@ -33,15 +70,17 @@ class Home extends Component{
            {/* End Title */}
            {/* Show item */}
            <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-             <Item/>
-             <Item/>
-             <Item/>
-             <Item/>
-             <Item/>
+           {loading}
+           {this.mapping()}
            </div>
            {/* ENd Show item */}
         </div>
         )
     }
 }
-export default Home
+export default (props)=>(
+    <Home
+    {...props}
+    usecontext={useContext(Context)}
+    />
+)

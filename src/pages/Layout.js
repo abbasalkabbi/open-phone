@@ -1,8 +1,11 @@
+
 import { Outlet,NavLink } from "react-router-dom";
 
 const Layout = () => {
+ 
   return (
     <>
+  
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul className="navbar-nav container-fluid">
           <li className="nav-item">
@@ -21,7 +24,7 @@ const Layout = () => {
                       <li>
                         <NavLink
                        to="/samsung"
-                       className={({isActive})=>(isActive?'nav-link active':' dropdown-item')}
+                       className={({isActive})=>(isActive?'dropdown-item disabled ':' dropdown-item')}
                        >
                        Samsung
                        </NavLink>

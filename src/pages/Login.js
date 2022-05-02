@@ -1,7 +1,8 @@
-import React, { Component } from "react"
+import React, { Component, useContext } from "react"
 import { Navigate } from "react-router";
 import axios from "axios";
-const url_login="http://localhost/open-phone/api/Login.php"
+import Context from "../Context";
+
 class Login extends Component{
     constructor(){
         super();
@@ -14,6 +15,7 @@ class Login extends Component{
         }
     }
     handleFormSubmit( event ) {
+      const url_login=this.props.usecontext.Login
       event.preventDefault();
       let login_data={
           email: this.state.email,
@@ -105,4 +107,9 @@ render(){
 
 }
 
-export default Login;
+export default (props)=>(
+  <Login
+  {...props}
+  usecontext={useContext(Context)}
+  />
+);

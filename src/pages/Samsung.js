@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component ,useContext } from "react";
 import {useParams } from "react-router-dom";
 import Item from "../components/Item";
 import { Loading } from "../components/Loading";
+import Context from "../Context";
+
 class Samsung extends Component{
     constructor(){
         super();
@@ -14,23 +16,25 @@ class Samsung extends Component{
  // created method fetch data from api
  componentDidMount(){
      let {id}=this.props.params
+     const url = this.props.usecontext.addpost
+  console.log(url)
      if(!id){
         id=0
      }
      this.setState({
          page:id
      })
-     console.log(id)
-     fetch(`http://localhost/open-phone/api/DataSamsung.php?page=${id}`)
+     fetch(`${url}${id}`)
         .then((res)=>res.json())
         .then((json)=>{
             this.setState({
                 data:json,
                 finished:true,
-                
 
             })
+           console.log(json)
         })
+        
  }
   mapping(){
       if(this.state.finished){
@@ -57,12 +61,12 @@ class Samsung extends Component{
          loading= <Loading/>
     }
     //Previous function
-    if(page===0){
+    if(parseInt(page)===0){
         Previous= <li class="page-item disabled">
         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
        </li>
     }
-    else if(page===1){
+    else if(parseInt(page)===1){
        Previous= <li className='page-item'><a className="page-link" href='/samsung'>&#8249; Previous</a></li>
      }else{
        Previous= <li className='page-item'><a className="page-link" href={'/samsung/'+(page-1)}>&#8249; Previous</a></li>
@@ -74,17 +78,13 @@ class Samsung extends Component{
      return(
          <div className="container">
              {loading}
-             {page}
              <div className=" mt-5 row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
                 {this.mapping()}
-                <div class="fixed-bottom container">
-                <ul className="pagination d-flex justify-content-between ">
-                {Previous}
-              {Next}
-              </ul>
-                </div>
-               
              </div>
+             <ul className="pagination d-flex justify-content-between m-1 ">
+                {Previous}
+                {Next}
+              </ul>
          </div>
      )
  }
@@ -95,6 +95,7 @@ export default (props)=>(
     <Samsung
     {...props}
     params={useParams()}
+    usecontext={useContext(Context)}
     />
 
 )
