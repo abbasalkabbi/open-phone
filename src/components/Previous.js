@@ -9,7 +9,7 @@ export  const Previous=(props)=>{
              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
             </li>
          :
-         <li className='page-item'><a className="page-link" href={`/${type}/`+(page-1)}>&#8249; Previous</a></li>
+         <li className='page-item'><a className="page-link" href={`/phones/${type}/`+(page-1)}>&#8249; Previous</a></li>
 
     )
     }

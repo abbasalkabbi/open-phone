@@ -1,5 +1,5 @@
 
-import { Outlet,NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { NavItem } from "../components/NavItem";
 
 const Layout = () => {
@@ -7,7 +7,7 @@ const Layout = () => {
     <>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">OPEN PHONE</a>
+    <a class="navbar-brand" href="/">OPEN PHONE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,10 +17,10 @@ const Layout = () => {
              <NavItem name='Home' url=''/>
         </li>
         <li class="nav-item">
-            <NavItem name='Samsung' url='samsung'/>
+            <NavItem name='Samsung' url='phones/samsung'/>
         </li>
         <li class="nav-item dropdown">
-            <NavItem name='Apple' url='apple'/>
+            <NavItem name='Apple' url='phones/apple'/>
         </li>
         {
         localStorage.getItem('id')

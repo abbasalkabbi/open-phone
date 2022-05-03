@@ -5,7 +5,7 @@ import { Loading } from "../components/Loading";
 import Context from "../Context";
 import { Next } from "../components/Next";
 import { Previous } from "../components/Previous";
-class Samsung extends Component{
+class Phones extends Component{
     constructor(){
         super();
         this.state={
@@ -17,7 +17,14 @@ class Samsung extends Component{
  // created method fetch data from api
  componentDidMount(){
      let {id}=this.props.params
-     const url = this.props.usecontext.Samsung
+     let {type}=this.props.params
+     let url;
+     console.log(type)
+     if(type=='samsung'){
+         url = this.props.usecontext.Samsung
+     }else if(type == 'apple'){
+        url = this.props.usecontext.apple
+     }
   console.log(url)
      if(!id){
         id=0
@@ -54,6 +61,7 @@ class Samsung extends Component{
   }
  render(){
     const {finished,page}=this.state
+    let {type}=this.props.params
     let loading=""
 
     // loadiionng  function
@@ -67,8 +75,8 @@ class Samsung extends Component{
                 {this.mapping()}
              </div>
              <ul className="pagination d-flex justify-content-between m-1 ">
-                <Previous page={page} type='samsung' />
-                <Next page={page} type='samsung'/>
+                <Previous page={page} type={type} />
+                <Next page={page} type={type}/>
               </ul>
          </div>
      )
@@ -78,7 +86,7 @@ class Samsung extends Component{
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props)=>(
-    <Samsung
+    <Phones
     {...props}
     params={useParams()}
     usecontext={useContext(Context)}

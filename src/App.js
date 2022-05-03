@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from './pages/Home'
 import Nopage from "./pages/Nopage";
-import Samsung from "./pages/Samsung";
+import Phones from "./pages/Phones";
 import  Login  from "./pages/Login";
 import AddPost from "./pages/AddPost";
 import Context from "./Context";
-import Apple from "./pages/Apple";
+
 function App(){
     const url_base='http://localhost/open-phone/api/'
     const url = {
@@ -24,11 +24,8 @@ function App(){
                    <Routes>
                          <Route path="/" element={<Layout />}>
                               <Route index element={<Home/>}/>
-                              <Route path="samsung" element={<Samsung/>}>
-                                  <Route path=":id" element={<Samsung/>}/>
-                              </Route>
-                              <Route path="apple" element={<Apple/>}>
-                                  <Route path=":id" element={<Apple/>}/>
+                              <Route path="phones/:type" element={<Phones/>}>
+                                  <Route path=":id" element={<Phones/>}/>
                               </Route>
                              <Route path="*" element={<Nopage/>}/>
                              <Route path='login' element={<Login/>}/>
