@@ -15,7 +15,7 @@ class Apple extends Component{
  // created method fetch data from api
  componentDidMount(){
      let {id}=this.props.params
-     const url = this.props.usecontext.addpost
+     const url = this.props.usecontext.apple
   console.log(url)
      if(!id){
         id=0

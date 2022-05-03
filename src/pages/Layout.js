@@ -29,6 +29,14 @@ const Layout = () => {
                        Samsung
                        </NavLink>
                      </li>
+                     <li>
+                        <NavLink
+                       to="/apple"
+                       className={({isActive})=>(isActive?'dropdown-item disabled ':' dropdown-item')}
+                       >
+                       Apple
+                       </NavLink>
+                     </li>
                 </ul>
            </li>
         </ul>
