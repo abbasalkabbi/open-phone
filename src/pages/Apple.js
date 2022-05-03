@@ -1,10 +1,9 @@
-import React, { Component ,useContext } from "react";
-import {useParams } from "react-router-dom";
-import Item from "../components/Item";
-import { Loading } from "../components/Loading";
+import { Component , useContext } from "react";
+import { useParams } from "react-router-dom";
 import Context from "../Context";
-
-class Samsung extends Component{
+import { Loading } from "../components/Loading";
+import Item from "../components/Item";
+class Apple extends Component{
     constructor(){
         super();
         this.state={
@@ -16,7 +15,7 @@ class Samsung extends Component{
  // created method fetch data from api
  componentDidMount(){
      let {id}=this.props.params
-     const url = this.props.usecontext.Samsung
+     const url = this.props.usecontext.addpost
   console.log(url)
      if(!id){
         id=0
@@ -50,30 +49,32 @@ class Samsung extends Component{
           return data
       }
   }
- render(){
-    const {finished,page}=this.state
-    let loading=""
-    let Previous=''
-    let Next=''
-    // loadiionng  function
-    if(!finished){
-         loading= <Loading/>
-    }
-    //Previous function
-    if(parseInt(page)===0){
-        Previous= <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
-       </li>
-    }
-    else if(parseInt(page)===1){
-       Previous= <li className='page-item'><a className="page-link" href='/samsung'>&#8249; Previous</a></li>
-     }else{
-       Previous= <li className='page-item'><a className="page-link" href={'/samsung/'+(page-1)}>&#8249; Previous</a></li>
-     }
-    //END Previous function
-    //Next function
-        Next=  <li className='page-item'><a className="page-link" href={'/samsung/'+(parseInt(page)+1)}>Next &#8250;</a></li>
-     //END Next function
+
+
+    render(){
+        const {finished,page}=this.state
+        let loading=""
+        let Previous=''
+        let Next=''
+        // loadiionng  function
+        if(!finished){
+             loading= <Loading/>
+        }
+        //Previous function
+         if(parseInt(page)===0){
+             Previous= <li class="page-item disabled">
+             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
+            </li>
+         }
+         else if(parseInt(page)===1){
+            Previous= <li className='page-item'><a className="page-link" href='/apple'>&#8249; Previous</a></li>
+          }else{
+            Previous= <li className='page-item'><a className="page-link" href={'/apple/'+(page-1)}>&#8249; Previous</a></li>
+          }
+         //END Previous function
+         //Next function
+             Next=  <li className='page-item'><a className="page-link" href={'/apple/'+(parseInt(page)+1)}>Next &#8250;</a></li>
+          //END Next function
      return(
          <div className="container">
              {loading}
@@ -86,15 +87,14 @@ class Samsung extends Component{
               </ul>
          </div>
      )
- }
+    }
 
 }
 
 export default (props)=>(
-    <Samsung
+    <Apple
     {...props}
     params={useParams()}
     usecontext={useContext(Context)}
     />
-
 )

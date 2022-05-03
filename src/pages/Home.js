@@ -49,7 +49,6 @@ class Home extends Component{
    }
         return(
         <div className="container">
-            
             {/* titel */}
            <section className="py-5 text-center">
                <div className="row py-lg-5">
