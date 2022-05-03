@@ -56,7 +56,7 @@ class Home extends Component{
                         <h1>
                             Open Phone
                         </h1>
-                        <p className="lead text-muted"> Lorem12
+                        <p className="lead text-muted"> Market Of moblie
 
                         </p>
                         <p>
