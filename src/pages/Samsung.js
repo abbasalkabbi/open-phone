@@ -43,6 +43,7 @@ class Samsung extends Component{
           id={item.id}
           img={`http://localhost/open-phone/api/assets/${item.url_img}`}
           name={item.name}
+          // eslint-disable-next-line eqeqeq
           type={item.type ==1?'Samsung':'Apple'}
           ram={item.ram}
           rom={item.rom}
@@ -59,7 +60,6 @@ class Samsung extends Component{
     if(!finished){
          loading= <Loading/>
     }
-    
      return(
          <div className="container">
              {loading}
@@ -76,6 +76,7 @@ class Samsung extends Component{
 
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (props)=>(
     <Samsung
     {...props}
