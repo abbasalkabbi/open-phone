@@ -9,7 +9,6 @@ export  const NavItem=(props)=>{
              className={({isActive})=>(isActive?'nav-link active':'nav-link ')}
              >
              {Name}
-             
         </NavLink>
     )
     }
