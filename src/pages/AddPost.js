@@ -1,5 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 const addpost='http://localhost/open-phone/api/AddPost.php'
 class AddPost extends Component{
 constructor(){
@@ -54,6 +55,7 @@ constructor(){
   }
   // start error
   error(){
+    // eslint-disable-next-line eqeqeq
     if(this.state.info=='successful'){
         return(
             <div class="alert  alert-success alert-dismissible fade show text-center" role="alert">
@@ -68,6 +70,7 @@ constructor(){
         const {name,type,price,ram,rom,screen}=this.state
         return(
             <div className="container d-flex justify-content-center">
+              {localStorage.getItem('id')?'':<Navigate replace to="/login" />}
                   {/* Start Form */}
                   <form className="mt-1  ">
                         <div className="card bg-light shadow-lg p-3 mb-5 bg-body rounded ">
@@ -127,7 +130,6 @@ constructor(){
                                                     <option value="1">Samsung</option>
                                                     <option value="2">Apple</option>
                                            </select>
-                                           
                                            {/* type */}
                                              {/* upload image */}
                                             <div class="mb-5">

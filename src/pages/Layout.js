@@ -22,6 +22,17 @@ const Layout = () => {
         <li class="nav-item dropdown">
             <NavItem name='Apple' url='apple'/>
         </li>
+        {
+        localStorage.getItem('id')
+        ?
+        <li class="nav-item dropdown">
+            <NavItem name='Add Post' url='AddPOst'/>
+        </li>
+        :
+        <li class="nav-item dropdown">
+             <NavItem name='Login' url='login'/>
+        </li>
+        }
       </ul>
     </div>
   </div>
