@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import Context from "../Context";
 import { Loading } from "../components/Loading";
 import Item from "../components/Item";
+import { Next } from "../components/Next";
+import { Previous } from "../components/Previous";
 class Apple extends Component{
     constructor(){
         super();
@@ -54,27 +56,10 @@ class Apple extends Component{
     render(){
         const {finished,page}=this.state
         let loading=""
-        let Previous=''
-        let Next=''
         // loadiionng  function
         if(!finished){
              loading= <Loading/>
         }
-        //Previous function
-         if(parseInt(page)===0){
-             Previous= <li class="page-item disabled">
-             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
-            </li>
-         }
-         else if(parseInt(page)===1){
-            Previous= <li className='page-item'><a className="page-link" href='/apple'>&#8249; Previous</a></li>
-          }else{
-            Previous= <li className='page-item'><a className="page-link" href={'/apple/'+(page-1)}>&#8249; Previous</a></li>
-          }
-         //END Previous function
-         //Next function
-             Next=  <li className='page-item'><a className="page-link" href={'/apple/'+(parseInt(page)+1)}>Next &#8250;</a></li>
-          //END Next function
      return(
          <div className="container">
              {loading}
@@ -82,8 +67,8 @@ class Apple extends Component{
                 {this.mapping()}
              </div>
              <ul className="pagination d-flex justify-content-between m-1 ">
-                {Previous}
-                {Next}
+                <Previous page={page} type='apple'/>
+                <Next page={page} type='apple'/>
               </ul>
          </div>
      )
