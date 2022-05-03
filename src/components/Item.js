@@ -12,7 +12,7 @@ function Item(props){
               <p class="card-text"> <span className="lead text-muted">Name:</span> {props.name}</p>
               <p class="card-text"> <span className="lead text-muted">Ram:</span> {props.ram}Gb</p>
               <p class="card-text"> <span className="lead text-muted">Rom:</span> {props.rom}Gb</p>
-              <div class="text-center my-4"> <a href={props.id} class="btn btn-warning">Check offer</a> </div>
+              <div class="text-center my-4"> <a href={`/phone/${props.id}`} class="btn btn-warning">Check offer</a> </div>
           </div>
        </div>
 </div>

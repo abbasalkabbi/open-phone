@@ -8,14 +8,17 @@ import Phones from "./pages/Phones";
 import  Login  from "./pages/Login";
 import AddPost from "./pages/AddPost";
 import Context from "./Context";
+import Phone from "./pages/Phone";
 
 function App(){
     const url_base='http://localhost/open-phone/api/'
     const url = {
+      url_img:`${url_base}/assets`,
       home:`${url_base}Data.php`,
       Login:`${url_base}Login.php`,
       Samsung:`${url_base}DataSamsung.php?page=`,
-      apple:`${url_base}DataApple.php?page=`
+      apple:`${url_base}DataApple.php?page=`,
+      phone:`${url_base}Phone.php?id=`
       };
     return(
         <div >
@@ -27,6 +30,7 @@ function App(){
                               <Route path="phones/:type" element={<Phones/>}>
                                   <Route path=":id" element={<Phones/>}/>
                               </Route>
+                             <Route path="phone/:id" element={<Phone/>}/>
                              <Route path="*" element={<Nopage/>}/>
                              <Route path='login' element={<Login/>}/>
                              <Route path='addpost' element={<AddPost/>}/>
