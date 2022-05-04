@@ -10,6 +10,7 @@ import AddPost from "./pages/AddPost";
 import Context from "./Context";
 import Phone from "./pages/Phone";
 import Register from "./pages/Register";
+import Cart from "./pages/Cart";
 
 function App(){
     const url_base='http://localhost/open-phone/api/'
@@ -21,7 +22,8 @@ function App(){
       Samsung:`${url_base}DataSamsung.php?page=`,
       apple:`${url_base}DataApple.php?page=`,
       phone:`${url_base}Phone.php?id=`,
-      addcart:`${url_base}AddCart.php?iduser=${localStorage.getItem('id')}`
+      addcart:`${url_base}AddCart.php?iduser=${localStorage.getItem('id')}`,
+      cart:`${url_base}Cart.php?iduser=`
       };
     return(
         <div >
@@ -38,6 +40,7 @@ function App(){
                              <Route path='login' element={<Login/>}/>
                              <Route path='register' element={<Register/>}/>
                              <Route path='addpost' element={<AddPost/>}/>
+                             <Route path='cart' element={<Cart/>}/>
                          </Route>
                    </Routes>
                    </BrowserRouter>
