@@ -11,7 +11,7 @@ const Layout = () => {
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <div className="collapse navbar-collapse text-center" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
              <NavItem name='Home' url=''/>
@@ -26,12 +26,20 @@ const Layout = () => {
         localStorage.getItem('id')
         ?
         <li className="nav-item dropdown">
-            <NavItem name='Add Post' url='AddPOst'/>
+            <NavItem name='Cart' url='Cart'/>
         </li>
         :
         <li className="nav-item dropdown">
              <NavItem name='Login' url='login'/>
         </li>
+        }
+        {
+          localStorage.getItem('admin') =='1'
+          ?
+          <li className="nav-item dropdown">
+            <NavItem name='Add Post' url='AddPOst'/>
+          </li>
+          :''
         }
       </ul>
     </div>

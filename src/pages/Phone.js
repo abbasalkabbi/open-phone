@@ -3,30 +3,58 @@ import { useParams } from "react-router-dom";
 import { Loading } from "../components/Loading";
 import Context from "../Context";
 class Phone extends Component{
-      constructor(){
-          super();
+      constructor(props){
+          super(props);
           this.state={
               phone_data:[],
-              finished:false
+              finished:false,
+              added:false,
           }
+          this.AddCart=this.AddCart.bind(this)
+          this.Checkisadded=this.Checkisadded.bind(this)
       }
-// created method fetch data from api
-componentDidMount(){
-    let {id}=this.props.params
-    let url=this.props.usecontext.phone
-    fetch(`${url}${id}`)
-       .then((res)=>res.json())
-       .then((json)=>{
-           this.setState({
-            phone_data:json,
-               finished:true,
 
+// created method fetch data from api
+   componentDidMount(){
+        let {id}=this.props.params
+        let url=this.props.usecontext.phone
+        fetch(`${url}${id}`)
+           .then((res)=>res.json())
+           .then((json)=>{
+               this.setState({
+                phone_data:json,
+                   finished:true,
+               })
            })
-           console.log(json)
-       })
-}
+    }
+      AddCart(){
+        if(this.state.finished){
+            let url_item=`${this.props.usecontext.addcart}&iditem=${this.state.phone_data[0].id}&check=flase`
+            fetch(`${url_item}`).then((res)=>res.json()).then((json)=>{
+                console.log(json)
+                this.setState({
+                    added:true,
+                })
+            })
+       }
+      }
+      Checkisadded(){
+        if(this.state.finished){
+            let url_item=`${this.props.usecontext.addcart}&iditem=${this.state.phone_data[0].id}&check=true`
+            fetch(`${url_item}`).then((res)=>res.json()).then((json)=>{
+                // eslint-disable-next-line eqeqeq
+                if(json.status ==true){
+                    this.setState({
+                        added:true,
+                    })
+                }
+            })
+
+        }
+
+      }
     render(){
-        const {phone_data,finished}=this.state
+        const {phone_data,finished,added}=this.state
         let  name,price,ram,rom,type,screen,url_img
         let loading=<Loading/>
         if(finished){
@@ -42,6 +70,7 @@ componentDidMount(){
         return(
 <div class="container mt-5 mb-5">
     {loading}
+   {this.Checkisadded()}
     <div className="row d-flex justify-content-center">
         <div className="col-md-10">
             <div className="card">
@@ -78,7 +107,13 @@ componentDidMount(){
                                           {price}$
                                           </h5>
                                       </div>
-                                      <div className="cart mt-4 align-items-center"> <button className="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> </div>
+                                      <div className="cart mt-4 align-items-center">
+                                                 {(added===true)
+                                                 ? <button  className='btn disabled btn-secondary text-uppercase mr-2 px-4' >Add to cart</button> 
+                                                 :
+                                                 <button onClick={this.AddCart} className='btn btn-danger text-uppercase mr-2 px-4' >Add to cart</button> 
+                                                 }
+                                          </div>
                                   </div>
                     </div>
                 </div>
@@ -90,6 +125,7 @@ componentDidMount(){
     }
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (props)=>(
     <Phone
     {...props}
@@ -97,3 +133,4 @@ export default (props)=>(
     usecontext={useContext(Context)}
     />
 );
+//&id_item=2

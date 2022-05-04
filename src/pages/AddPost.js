@@ -70,7 +70,7 @@ constructor(){
         const {name,type,price,ram,rom,screen}=this.state
         return(
             <div className="container d-flex justify-content-center">
-              {localStorage.getItem('id')?'':<Navigate replace to="/login" />}
+              {localStorage.getItem('admin')=='1'?'':<Navigate replace to="/login" />}
                   {/* Start Form */}
                   <form className="mt-1  ">
                         <div className="card bg-light shadow-lg p-3 mb-5 bg-body rounded ">
