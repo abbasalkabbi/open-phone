@@ -14,35 +14,43 @@ class Phones extends Component{
             page:0,
         }
     }
- // created method fetch data from api
- componentDidMount(){
-     let {id}=this.props.params
-     let {type}=this.props.params
-     let url;
-     console.log(type)
-     if(type=='samsung'){
-         url = this.props.usecontext.Samsung
-     }else if(type == 'apple'){
-        url = this.props.usecontext.apple
-     }
-  console.log(url)
-     if(!id){
-        id=0
-     }
-     this.setState({
-         page:id
-     })
-     fetch(`${url}${id}`)
-        .then((res)=>res.json())
-        .then((json)=>{
-            this.setState({
-                data:json,
-                finished:true,
+ // created method fetch data from api 
+ fetchData(){
+    let {id}=this.props.params
+    let {type}=this.props.params
+    let url;
+    console.log(type)
+    if(type=='samsung'){
+        url = this.props.usecontext.Samsung
+    }else if(type == 'apple'){
+       url = this.props.usecontext.apple
+    }
+ console.log(url)
+    if(!id){
+       id=0
+    }
+    this.setState({
+        page:id
+    })
+    fetch(`${url}${id}`)
+       .then((res)=>res.json())
+       .then((json)=>{
+           this.setState({
+               data:json,
+               finished:true,
 
-            })
-           console.log(json)
-        })
+           })
+       })
  }
+ componentDidMount(){
+    this.fetchData()
+ }
+ componentDidUpdate(prevProps) {
+    
+    if (this.props.params !== prevProps.params) {
+      this.fetchData()
+    }
+  }
   mapping(){
       if(this.state.finished){
           const data=this.state.data.map(item =>

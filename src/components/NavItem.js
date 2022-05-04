@@ -5,10 +5,11 @@ export  const NavItem=(props)=>{
     let Name=props.name
     return(
         <NavLink
-             to={`${url}`}
+             to={`/${url}`}
              className={({isActive})=>(isActive?'nav-link active':'nav-link ')}
              >
              {Name}
+            
         </NavLink>
     )
     }

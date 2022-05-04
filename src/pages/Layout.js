@@ -17,7 +17,7 @@ const Layout = () => {
              <NavItem name='Home' url=''/>
         </li>
         <li class="nav-item">
-            <NavItem name='Samsung' url='phones/samsung'/>
+          <NavItem name='Samsung' url='phones/samsung'/>
         </li>
         <li class="nav-item dropdown">
             <NavItem name='Apple' url='phones/apple'/>
