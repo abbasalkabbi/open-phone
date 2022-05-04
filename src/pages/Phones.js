@@ -14,18 +14,16 @@ class Phones extends Component{
             page:0,
         }
     }
- // created method fetch data from api 
+ // created method fetch data from api
  fetchData(){
     let {id}=this.props.params
     let {type}=this.props.params
     let url;
-    console.log(type)
     if(type=='samsung'){
         url = this.props.usecontext.Samsung
     }else if(type == 'apple'){
        url = this.props.usecontext.apple
     }
- console.log(url)
     if(!id){
        id=0
     }
@@ -46,7 +44,6 @@ class Phones extends Component{
     this.fetchData()
  }
  componentDidUpdate(prevProps) {
-    
     if (this.props.params !== prevProps.params) {
       this.fetchData()
     }

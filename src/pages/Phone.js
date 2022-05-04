@@ -42,43 +42,43 @@ componentDidMount(){
         return(
 <div class="container mt-5 mb-5">
     {loading}
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="row">
-                    <div class="col-md-6">
-                                  <div class="images p-3">
-                                      <div class="text-center p-4"> <img id="main-image" src={url_img} width="300" /> </div>
+    <div className="row d-flex justify-content-center">
+        <div className="col-md-10">
+            <div className="card">
+                <div className="row">
+                    <div className="col-md-6">
+                                  <div className="images p-3">
+                                      <div className="text-center p-4"> <img id="main-image" src={url_img} width="300" /> </div>
                                   </div>
                               </div>
-                              <div class="col-md-6">
-                                  <div class="product p-4">
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <div class="d-flex align-items-center"> <span class="p-2  h2 bg-primary badge rounded-pill">{type}</span> </div> 
+                              <div className="col-md-6">
+                                  <div className="product p-4">
+                                      <div className="d-flex justify-content-between align-items-center">
+                                          <div className="d-flex align-items-center"> <span className="p-2  h2 bg-primary badge rounded-pill">{type}</span> </div>
                                       </div>
-                                      <div class="mt-4 mb-3">
-                                          <h5 class="text-uppercase">
-                                          <span class="text-uppercase text-muted brand">Name :</span>
+                                      <div className="mt-4 mb-3">
+                                          <h5 className="text-uppercase">
+                                          <span className="text-uppercase text-muted brand">Name :</span>
                                           {name}
                                           </h5>
-                                          <h5 class="text-uppercase">
-                                          <span class="text-uppercase text-muted brand">screen :</span>
+                                          <h5 className="text-uppercase">
+                                          <span className="text-uppercase text-muted brand">screen :</span>
                                           {screen}
                                           </h5>
-                                          <h5 class="text-uppercase">
-                                          <span class="text-uppercase text-muted brand">Ram :</span>
+                                          <h5 className="text-uppercase">
+                                          <span className="text-uppercase text-muted brand">Ram :</span>
                                           {ram}gb
                                           </h5>
-                                          <h5 class="text-uppercase">
-                                          <span class="text-uppercase text-muted brand">Rom :</span>
+                                          <h5 className="text-uppercase">
+                                          <span className="text-uppercase text-muted brand">Rom :</span>
                                           {rom}gb
                                           </h5>
-                                          <h5 class="text-uppercase">
-                                          <span class="text-uppercase text-muted brand">Price :</span>
+                                          <h5 className="text-uppercase">
+                                          <span className="text-uppercase text-muted brand">Price :</span>
                                           {price}$
                                           </h5>
                                       </div>
-                                      <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                      <div className="cart mt-4 align-items-center"> <button className="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> </div>
                                   </div>
                     </div>
                 </div>

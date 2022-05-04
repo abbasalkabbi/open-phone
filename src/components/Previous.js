@@ -5,8 +5,8 @@ export  const Previous=(props)=>{
     let page=props.page
     return(
         (page==0)?
-        <li class="page-item disabled">
-             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
+        <li className="page-item disabled">
+             <a className="page-link" href="#" tabindex="-1" aria-disabled="true">&#8249; Previous</a>
             </li>
          :
          <li className='page-item'><a className="page-link" href={`/phones/${type}/`+(page-1)}>&#8249; Previous</a></li>
