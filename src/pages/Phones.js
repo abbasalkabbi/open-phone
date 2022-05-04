@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component ,useContext } from "react";
 import {useParams } from "react-router-dom";
 import Item from "../components/Item";

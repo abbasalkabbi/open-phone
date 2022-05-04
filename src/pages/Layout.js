@@ -1,8 +1,13 @@
 
-import { Outlet } from "react-router-dom";
-import { NavItem } from "../components/NavItem";
+import {  Outlet } from "react-router-dom";
+import { Dropdown, NavItem } from "../components/NavItem";
 
 const Layout = () => {
+  function logout(){
+    localStorage.removeItem('id');
+    localStorage.removeItem('admin');
+   
+  }
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,25 +27,35 @@ const Layout = () => {
         <li className="nav-item dropdown">
             <NavItem name='Apple' url='phones/apple'/>
         </li>
-        {
-        localStorage.getItem('id')
-        ?
-        <li className="nav-item dropdown">
-            <NavItem name='Cart' url='Cart'/>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul class="dropdown-menu text-center " aria-labelledby="navbarDropdown">
+            <li>
+               {
+                 localStorage.getItem('id')
+                 ? <Dropdown name='Cart' url='cart'/>
+                 :<Dropdown name='Login' url='login'/>
+                }
+            </li>
+             {
+             localStorage.getItem('admin') =='1'
+             ?
+              <li>
+                <Dropdown name='Add Post' url='addpost'/>
+               </li>
+             :''
+              }
+              {
+                localStorage.getItem('id')
+                ?<li>
+                  <button className="dropdown-item "onClick={() =>{ logout(); window.location.reload()}}>Log Out</button>
+                </li>
+                :''
+              }
+          </ul>
         </li>
-        :
-        <li className="nav-item dropdown">
-             <NavItem name='Login' url='login'/>
-        </li>
-        }
-        {
-          localStorage.getItem('admin') =='1'
-          ?
-          <li className="nav-item dropdown">
-            <NavItem name='Add Post' url='AddPOst'/>
-          </li>
-          :''
-        }
       </ul>
     </div>
   </div>
