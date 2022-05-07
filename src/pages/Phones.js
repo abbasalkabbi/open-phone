@@ -13,6 +13,7 @@ class Phones extends Component{
             data:[],
             finished:false,
             page:0,
+            end:0,
         }
     }
  // created method fetch data from api
@@ -20,18 +21,22 @@ class Phones extends Component{
     let {id}=this.props.params
     let {type}=this.props.params
     let url;
-    if(type=='samsung'){
-        url = this.props.usecontext.Samsung
-    }else if(type == 'apple'){
-       url = this.props.usecontext.apple
-    }
+    let url_count;
     if(!id){
-       id=0
+        id=0
+     }
+    if(type=='samsung'){
+        url = `${this.props.usecontext.Phones}${id}&&type=samsung`
+        url_count = `${this.props.usecontext.url_count}samsung`
+    }else if(type == 'apple'){
+       url = `${this.props.usecontext.Phones}${id}&&type=apple`
+       url_count = `${this.props.usecontext.url_count}apple`
     }
+    console.log(url)
     this.setState({
         page:id
     })
-    fetch(`${url}${id}`)
+    fetch(`${url}`)
        .then((res)=>res.json())
        .then((json)=>{
            this.setState({
@@ -40,6 +45,15 @@ class Phones extends Component{
 
            })
        })
+    fetch(`${url_count}`)
+      .then((res)=>res.json()).then((json)=>{
+        console.log(json)
+
+          this.setState({
+            end:json
+          })
+
+      })
  }
  componentDidMount(){
     this.fetchData()
@@ -66,7 +80,7 @@ class Phones extends Component{
       }
   }
  render(){
-    const {finished,page}=this.state
+    const {finished,page,end}=this.state
     let {type}=this.props.params
     let loading=""
 
@@ -82,7 +96,7 @@ class Phones extends Component{
              </div>
              <ul className="pagination d-flex justify-content-between m-1 ">
                 <Previous page={page} type={type} />
-                <Next page={page} type={type}/>
+                <Next page={page} type={type} end={end}/>
               </ul>
          </div>
      )

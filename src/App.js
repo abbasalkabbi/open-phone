@@ -19,9 +19,9 @@ function App(){
       home:`${url_base}Data.php`,
       Login:`${url_base}Login.php`,
       register:`${url_base}register.php`,
-      Samsung:`${url_base}DataSamsung.php?page=`,
-      apple:`${url_base}DataApple.php?page=`,
+      Phones:`${url_base}DataPhones.php?page=`,
       phone:`${url_base}Phone.php?id=`,
+      url_count:`${url_base}Count.php?type=`,
       addcart:`${url_base}AddCart.php?iduser=${localStorage.getItem('id')}`,
       cart:`${url_base}Cart.php?iduser=`
       };
